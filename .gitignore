@@ -1,2 +1,5 @@
 *.pyc
 *.swp
+
+# Ignore docker image file
+oncoserve_mirai.0.5.0.tar
