@@ -1,19 +1,33 @@
 # OncoServe: Deploying Deep Learning Models for Breast Cancer Risk Assessment, and Breast Density Assessment.
 
-# [Francisco Calisto] Using Docker (by Marcelo Jacinto)
+## New Instructions: Using Docker in the Terminal
+
+1. Download [Density](https://www.dropbox.com/s/vncq542aapjtvc8/oncoserve_density_0.1.0.tar?dl=0) and put the `oncoserve_density_0.1.0.tar` file inside the `dockerimg` folder;
+
+2. If it is your first time loading the `oncoserve_density_0.1.0.tar` file, you need to do the following command:
 
 ```
 docker load < dockerimg/oncoserve_density_0.1.0.tar
+```
+
+3. To start, just do:
+
+```
 docker compose up
 ```
 
-Fechar no final de tudo:
+P.S.: note that this may take a while.
+
+4. In the end, you need to finish the full process by doing:
 
 ```
 docker compose down
 ```
 
+# Old Instructions
+
 ## Introduction
+
 This repository shares the models described in [Towards Robust Mammography-Based Models for Breast Cancer Risk](https://www.science.org/doi/10.1126/scitranslmed.aba4373) and [Mammographic Breast Density Assessment Using
 Deep Learning: Clinical Implementation](https://pubs.rsna.org/doi/10.1148/radiol.2018180694) as a (Flask) webserver.  You can send the webserver regular HTTP requests with a list of dicoms for a given mammogram, and a set of metadata keys (like MRN or Accession), and the webserver will return the model predictions along back with the same metadata. We note that we do not support all dicom formats, we assume presentation view mammograms, and have only tested this system with Hologic mammograms.
 
