@@ -2,15 +2,17 @@
 
 ## New Instructions: Using Docker in the Terminal
 
-1. Download [Density](https://www.dropbox.com/s/vncq542aapjtvc8/oncoserve_density_0.1.0.tar?dl=0) and put the `oncoserve_density_0.1.0.tar` file inside the `dockerimg` folder;
+1. Put all `.dcm` images inside the `dataset` folder;
 
-2. If it is your first time loading the `oncoserve_density_0.1.0.tar` file, you need to do the following command:
+2. Download [Density](https://www.dropbox.com/s/vncq542aapjtvc8/oncoserve_density_0.1.0.tar?dl=0) and put the `oncoserve_density_0.1.0.tar` file inside the `dockerimg` folder;
+
+3. If it is your first time loading the `oncoserve_density_0.1.0.tar` file, you need to do the following command:
 
 ```
 docker load < dockerimg/oncoserve_density_0.1.0.tar
 ```
 
-3. To start, just do:
+4. To start, just do:
 
 ```
 docker compose up
@@ -18,7 +20,7 @@ docker compose up
 
 P.S.: note that this may take a while.
 
-4. In the end, you need to finish the full process by doing:
+5. In the end, you need to finish the full process by doing:
 
 ```
 docker compose down
