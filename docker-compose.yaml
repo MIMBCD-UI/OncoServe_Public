@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # The server that actually makes the processing
+  oncoserver:
+    image: learn2cure/oncoserve_density:0.1.0
+    environment:
+      CONFIG_NAME: "config.DensityConfig"
+    ports:
+      - "6001:5000"
+    shm_size: '32gb'
+    healthcheck:
+      test: ["CMD", "curl", "http://oncoserver:5000"]
+      interval: 1s
+      timeout: 3s
+      retries: 15
+      start_period: 1s
+  # My container with the script that will run the experiments
+  demo_dcm:
+    build: .
+    volumes:
+      - ./:/OncoServe
+    ports:
+      - "6000:5000"
+    command: python tests/demo.py
+    depends_on:
+      oncoserver:
+        condition: service_healthy

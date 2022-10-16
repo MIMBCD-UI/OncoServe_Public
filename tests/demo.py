@@ -8,21 +8,20 @@ import sys
 sys.path.append(dirname(dirname(realpath(__file__))))
 import oncoserve.aggregators.basic as aggregators
 
-DOMAIN = "http://localhost:5000"
+DOMAIN = "http://oncoserver:5000"
 
 class Test_MIT_App(unittest.TestCase):
 
     def setUp(self):
-        self.f1 = open("/home/yala/sample_dicoms/1.dcm", 'rb')
-        self.f2 = open("/home/yala/sample_dicoms/2.dcm", 'rb')
-        self.f3 = open("/home/yala/sample_dicoms/3.dcm", 'rb')
-        self.f4 = open("/home/yala/sample_dicoms/4.dcm", 'rb')
+        self.f1 = open("dataset/MG000001.dcm", 'rb')
+        self.f2 = open("dataset/MG000002.dcm", 'rb')
+        self.f3 = open("dataset/MG000003.dcm", 'rb')
+        self.f4 = open("dataset/MG000004.dcm", 'rb')
         # Fake MRN
         self.MRN = '11111111'
         # Fake Accession
         self.ACCESSION = '2222222'
         self.METADATA = {'mrn':self.MRN, 'accession': self.ACCESSION}
-
 
 
     def tearDown(self):
