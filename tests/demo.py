@@ -6,6 +6,7 @@ import os, shutil
 from os.path import dirname, realpath
 import sys
 import pathlib
+import csv
 sys.path.append(dirname(dirname(realpath(__file__))))
 import oncoserve.aggregators.basic as aggregators
 
@@ -46,6 +47,8 @@ class Test_MIT_App(unittest.TestCase):
         Demo of how to use MIRAI. Note, this is applicable for all MIRAI applications.
         '''
 
+        fileTabular = open('densenties/demo.csv', 'w')
+
         '''
          1. Load dicoms. Make sure to filter by view, MIRAI will not take responsibility for this.
         '''
@@ -63,11 +66,19 @@ class Test_MIT_App(unittest.TestCase):
             '''
             3. Results will contain prediction, status, version info, all original metadata
             '''
-            print(r.__dict__)
+            rquestObject = r.__dict__
+            print(rquestObject)
+            print(file)
+            writer = csv.writer(fileTabular)
+            dataTabular = [file, rquestObject]
+            writer.writerow(dataTabular)
+
             self.assertEqual(r.status_code, 200)
             content = json.loads(r.content)
             self.assertEqual(content['metadata']['mrn'], self.MRN)
             self.assertEqual(content['metadata']['accession'], self.ACCESSION)
+
+            file.close()
 
 if __name__ == '__main__':
     unittest.main()
